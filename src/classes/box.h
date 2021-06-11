@@ -128,6 +128,8 @@ class Box
     virtual Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const = 0;
     // Return minimum image vector from r1 to r2
     virtual Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const = 0;
+    // Return normalised minimum image vector from r1 to r2
+    virtual Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const = 0;
     // Return minimum image distance from r1 to r2
     virtual double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const = 0;
     // Return minimum image squared distance from r1 to r2
@@ -198,6 +200,8 @@ class NonPeriodicBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
@@ -228,6 +232,8 @@ class CubicBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
@@ -265,6 +271,8 @@ class OrthorhombicBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
@@ -295,6 +303,8 @@ class MonoclinicAlphaBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
@@ -325,6 +335,8 @@ class MonoclinicBetaBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
@@ -355,6 +367,8 @@ class MonoclinicGammaBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
@@ -385,6 +399,8 @@ class TriclinicBox : public Box
     Vec3<double> minimumImage(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image vector from r1 to r2
     Vec3<double> minimumVector(const Vec3<double> &r1, const Vec3<double> &r2) const override;
+    // Return normalised minimum image vector from r1 to r2
+    Vec3<double> minimumVectorN(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image distance from r1 to r2
     double minimumDistance(const Vec3<double> &r1, const Vec3<double> &r2) const override;
     // Return minimum image squared distance from r1 to r2
