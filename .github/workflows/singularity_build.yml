@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: 'centos:7'
     env:
       SERVICE_NAME: notification_service
     steps:
@@ -15,11 +16,12 @@ jobs:
         run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: install dependencies
         run:  |
-          wget -O- http://neuro.debian.net/lists/xenial.us-ca.full | sudo tee /etc/apt/sources.list.d/neurodebian.sources.list && \
-          sudo apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9 && \
-          sudo apt-get update
+          yum update -y && \
+          yum install -y epel-release && \
+          yum update -y && \
+          yum install -y singularity-runtime singularity
       - name: install singularity 
-        run: sudo apt-get install -y singularity-container
+        run: yum install -y singularity
       - name: checkout
         uses: actions/checkout@v2
       - name: build singularity image
