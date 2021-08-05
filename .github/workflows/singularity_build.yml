@@ -1,0 +1,29 @@
+
+---
+name: Build & Release RPM
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SERVICE_NAME: notification_service
+    steps:
+      - name: Get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - name: install singularity 
+        run: sudo apt-get install -y singularity-container
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build singularity image
+        working-directory: /__w/
+        run: singularity build dissolve-${{ env.TAG }}.sif /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}/singularity.def
+      # - name: Upload binaries to release
+      #   uses: svenstaro/upload-release-action@v2
+      #   with:
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     file: /__w/dissolve-${{ env.TAG }}.sif
+      #     tag: ${{ github.ref }}
+      #     overwrite: true

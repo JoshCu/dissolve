@@ -1,0 +1,21 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+%help
+    A singularity container for the latest Dissolve version. Dissolve CLI is located at /Dissolve.AppImage,
+    Dissolve GUI is located at /Dissolve-GUI.AppImage
+
+%post
+    apt-get -y update
+    apt-get -y install curl wget fuse antlr4 libfreetype6-dev libftgl-dev ninja-build python3-setuptools uuid uuid-dev software-properties-common
+    apt-get -y update
+    add-apt-repository -y ppa:beineri/opt-qt-5.15.2-focal
+    apt-get install -y qt515base qt515svg qt515imageformats
+    curl https://api.github.com/repos/disorderedmaterials/dissolve/releases/latest | grep -Po https.*\.AppImage > urls
+    cat urls | grep -v GUI | xargs wget -O Dissolve.AppImage
+    cat urls | grep GUI | xargs wget -O Dissolve-GUI.AppImage
+    chmod +x *.AppImage
+
+%runscript
+    #If the container is executed, this line will be run and all arguments will be passed to it
+    exec Dissolve.AppImage "$@"
