@@ -24,9 +24,11 @@ jobs:
         run: yum install -y singularity
       - name: checkout
         uses: actions/checkout@v2
+      - name: set unprivileged_userns_clone 1
+        run: echo 1 > /proc/sys/kernel/unprivileged_userns_clone
       - name: build singularity image
         working-directory: /__w/
-        run: singularity build --fakeroot dissolve.sif /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}/singularity.def
+        run: singularity build dissolve.sif /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}/singularity.def
       # - name: Upload binaries to release
       #   uses: svenstaro/upload-release-action@v2
       #   with:
