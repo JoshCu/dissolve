@@ -16,17 +16,17 @@ jobs:
       #   run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: install dependencies
         run:  |
-          yum update -y && \
-          yum install -y epel-release && \
-          yum update -y && \
-          yum install -y singularity-runtime singularity
+          sudo yum update -y && \
+          sudo yum install -y epel-release && \
+          sudo yum update -y && \
+          sudo yum install -y singularity-runtime singularity
       - name: install singularity 
-        run: yum install -y singularity
+        run: sudo yum install -y singularity
       - name: checkout
         uses: actions/checkout@v2
       - name: build singularity image
         working-directory: /__w/
-        run: singularity build dissolve.sif /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}/singularity.def
+        run: sudo singularity build dissolve.sif /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}/singularity.def
       # - name: Upload binaries to release
       #   uses: svenstaro/upload-release-action@v2
       #   with:
